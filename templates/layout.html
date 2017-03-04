@@ -8,7 +8,7 @@
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
       <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="/">Brand</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -58,4 +58,11 @@
   <li role="presentation"><a href="#">TASK_2</a></li>
   <li role="presentation"><a href="#">TASK_3</a></li>
 </ul>
+
+
+
+{% for proj in projects %}
+{% block project_block scoped %}
+{% endblock %}
+{% endfor %}
 {% endblock %}
