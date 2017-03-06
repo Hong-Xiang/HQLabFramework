@@ -10,7 +10,7 @@ import mpld3
 from IPython.display import HTML
 import random
 from flask import request
-from HQLabFramework.apps.project import Project
+from HQLabFramework.apps.project import Project, HOME
 
 
 app = Flask(__name__)
@@ -53,6 +53,16 @@ def project_upper():
             p.upper()
     return render_template('main.html', projects=projects)
 
+
+@app.route("/project_refresh", methods=['GET', 'POST'])
+def project_refresh():
+    project_id = int(request.args.get("proj_id"))
+    for p in projects:        
+        if p.id == project_id:                     
+            p.refresh()
+    return render_template('main.html', projects=projects)
+
+
 @app.route("/open_file", methods=['GET'])
 def open_file():
     filename = request.args.get("path")    
@@ -78,13 +88,17 @@ def plottest():
     y = np.sin(x)
     fig = plt.figure()
     plt.plot(x, y)
-    return mpld3.fig_to_html(fig)
+    img = mpld3.fig_to_html(fig)
+    return render_template('showpic.html', projects=projects, image_content=img)
 
 
-@app.route('/add/<filename>')
-def run(filename=None):
-    subprocess.call(['python3', 'test2.py', filename])
-    return "file added."
+@app.route('/add_file', methods=['GET'])
+def add_file(project_name=None):
+    file_name = request.args.get("add_file_name")            
+    file_path = os.path.join(HOME, file_name)    
+    print(file_path)
+    subprocess.call(['python3', 'test2.py', file_path])
+    return render_template('main.html', projects=projects)
 # @app.route('/signup', methods=['POST'])
 # def signup():
 #     session['username'] = request.form['username']

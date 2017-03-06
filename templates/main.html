@@ -30,10 +30,21 @@
         {% endfor %}      
         <li> {{ proj.cdir.basename }} </li>
     </ol>
+    <form class="form-inline" role="form" method="GET" action="{{ url_for("add_file" ) }}">
+    <div class="form-group">
+        <label for="FileNameInput">File Name</label>
+        <input name="add_file_name" type="text" class="form-control" id="FileNameInput" placeholder="File">
+    </div>
+    <button class="btn btn-primary" role="button" type="submit">
+        Add file
+    </button>
+    </form>
     <a class="btn btn-primary" href=" {{ url_for("project_upper", proj_id=proj.id) }} "> 向上 </a>
+    <a class="btn btn-primary" href=" {{ url_for("project_refresh", proj_id=proj.id) }} "> 刷新 </a>
     <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample{{ proj.id }}" aria-expanded="false" aria-controls="collapseExample{{ proj.id }}">
     列出目录
     </button>
+
     <div class="collapse" id="collapseExample{{ proj.id }}">
     <div class="btn-group-vertical" role="group" aria-label="current_dir_{{ proj.id }}">
         {% for file in proj.child_dirs %}
