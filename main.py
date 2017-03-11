@@ -15,6 +15,7 @@ from HQLabFramework.apps.project import Project, HOME
 
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.config['DEBUG'] = True
 Bootstrap(app)
 # app.config['SECRET_KEY'] = 'F34TF$($e34D'
 
@@ -89,6 +90,7 @@ def plottest():
     fig = plt.figure()
     plt.plot(x, y)
     img = mpld3.fig_to_html(fig)
+    return img
     return render_template('showpic.html', projects=projects, image_content=img)
 
 
@@ -113,4 +115,4 @@ def add_file(project_name=None):
 #                                            message=session['message'])
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=5000)
