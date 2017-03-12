@@ -1,0 +1,22 @@
+{% extends 'main.html' %} {% block right_col %} {{ super() }}
+
+<div class="container-fluid">
+    <form class="form-inline" role="form" method="GET" action="{{ url_for("project_list.add_project") }}">
+        <div class="form-group">
+            <label for="PeojectNameInput">Project Name</label>
+            <input name="project_name" type="text" class="form-control" id="PeojectNameInput" placeholder="Project">
+        </div>
+        <button class="btn btn-primary" role="button" type="submit">
+        Add Project
+    </button>
+    </form>
+</div>
+<br>
+<br>
+<br>
+{% for proj in projects %}
+    {% block project_block scoped %} 
+    {% endblock %}
+{% endfor %} 
+
+{% endblock %}
