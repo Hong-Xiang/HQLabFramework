@@ -157,14 +157,13 @@
 		{{ wrong_message }}
 		<form action="" method="post" id="form1" target="_self" onSubmit="return userCheck()">
 			{{form.hidden_tag()}}
-			<p>
-				{{form.username(size=80)}}
-				{{form.password(size=80)}}
-			</p>			
-			<!--<input type="text" required placeholder="Username" id="userName" autofocus="autofocus">
+			<!--<p> {{form.username(size=80)}}  {{form.password(size=80)}} </p>	-->	
+			
+			<input type="text" name="username" required placeholder="Username" id="username" autofocus>
 			</input>
-			<input type="password" required placeholder="Password" id="passWord">
-			</input>-->
+			<input type="password" name="password" required placeholder="Password" id="password">
+			</input>
+			
 			<input type="text" id="numcode" onClick="createCode()" readonly class="code" style="width:100px;text-align:center;display:inline-block">
 			</input>
 			<input type="text" id="inputcode" required placeholder="Verification code" style="width:152px;text-align:center;display:inline-block">			</input>
