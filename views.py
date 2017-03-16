@@ -55,8 +55,8 @@ def test_page():
 @app.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
-    # return render_template('hello.html', username=current_user)
-    return redirect(url_for('project_list.home'))
+    return render_template('HQteam_1.html', username=current_user)
+    #return redirect(url_for('HQteam_1.html'))
 
 
 @app.route('/plottest')

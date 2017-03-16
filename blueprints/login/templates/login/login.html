@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,8 +10,7 @@
 			height: 100%;
 			font-family: 'Open Sans', sans-serif;
 			margin: 0;
-			<!--background-color: #4A374A;
-			-->
+			background-color: #4A374A;			
 		}
 		
 		#login {
@@ -24,8 +23,8 @@
 		}
 		
 		#login h1 {
-			<!--color: #fff;
-			-->letter-spacing: 1px;
+			color: #fff;
+			letter-spacing: 1px;
 			text-align: center;
 		}
 		
@@ -91,7 +90,7 @@
 			letter-spacing: 1px;
 			text-align: center;
 			font-size: 35px;
-			opacity: 0.5;
+			opacity: 0.5;            
 		}
 		
 		.code {
@@ -123,27 +122,16 @@
 		}
 
 		function userCheck() {
-			var user = document.getElementById("userName").value;
-			if (user != "PET") {
-				document.getElementById("checkError").innerHTML = "Invalid user name";
-				return false;
-			}
-
-			var pwd = document.getElementById("passWord").value;
-			if (pwd != "2017") {
-				document.getElementById("checkError").innerHTML = "Error password";
-				return false;
-			}
-
-			var inputCode = document.getElementById("inputcode").value.toUpperCase();
-			if (inputCode != code.value.toUpperCase()) {
-				document.getElementById("checkError").innerHTML = "Error verification code";
-				return false;
-			}
-			else {
-				return true;
-			}
+			var inputCode=document.getElementById("inputcode").value.toUpperCase();
+			if(inputCode != code.toUpperCase())
+            {
+			 
+             document.getElementById("checkError").innerHTML = "Error verification code";
+			 document.getElementById("inputcode").value="";
+			 }		
+			
 		}
+		
 	</script>
 
 </head>
@@ -155,19 +143,19 @@
 	<div id="login">
 		<h1>Login</h1>
 		{{ wrong_message }}
-		<form action="" method="post" id="form1" target="_self" onSubmit="return userCheck()">
+		<form action="" method="post" id="form1" target="_self">
 			{{form.hidden_tag()}}
-			<p>
-				{{form.username(size=80)}}
-				{{form.password(size=80)}}
-			</p>			
-			<!--<input type="text" required placeholder="Username" id="userName" autofocus="autofocus">
+            			
+			<input type="text" name="username" required placeholder="Username" id="username" autofocus>
 			</input>
-			<input type="password" required placeholder="Password" id="passWord">
-			</input>-->
+			<input type="password" name="password" required placeholder="Password" id="password">
+			</input>
+
 			<input type="text" id="numcode" onClick="createCode()" readonly class="code" style="width:100px;text-align:center;display:inline-block">
 			</input>
-			<input type="text" id="inputcode" required placeholder="Verification code" style="width:152px;text-align:center;display:inline-block">			</input>
+			<input type="text" id="inputcode" required placeholder="Verification code" style="width:152px;text-align:center;display:inline-block" onblur="userCheck()" >			
+            </input>
+            
 			<button class="but" type="submit">Login</button>
 			<br>
 			<div id="checkError"></div>

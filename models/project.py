@@ -1,6 +1,6 @@
 import os
 from hqlf.models.user import User
-HOME = "/home/hongxwing/Workspace/HQLF_test"
+HOME = "D:\\test"
 
 cid = 0
 
@@ -13,7 +13,7 @@ class PathForWeb:
         self._fullpath = fullpath
         self._basename = os.path.basename(self._fullpath)
         self._pdir = os.path.dirname(self._fullpath)
-        self._pdirs = self._pdir.split('/')[1:]
+        self._pdirs = self._pdir.split('\\')[1:]
 
     @property
     def fullpath(self):
