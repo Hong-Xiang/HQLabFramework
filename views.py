@@ -1,7 +1,7 @@
 import os
 import mpld3
 from IPython.display import HTML
-from flask import render_template, flash, redirect, jsonify, url_for
+from flask import render_template, flash, redirect, jsonify, url_for, request
 from flask_login import login_required, current_user
 from hqlf import app, oid
 from hqlf.blueprints.login import login_pages
@@ -19,6 +19,14 @@ app.register_blueprint(project_list, url_prefix='/project_list')
 def showdir():
     return redirect(url_for('project_list.home'))
 
+@app.route("/info", methods=['GET'])
+def info():
+    page = request.args.get('page')
+    if page is None:
+        page = 1
+    else:
+        page = int(page)
+    return render_template('HQteam_%d.html'%(page))
 
 @app.route('/help', methods=['GET'])
 def help():
@@ -55,8 +63,8 @@ def test_page():
 @app.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
-    return render_template('HQteam_1.html', username=current_user)
-    #return redirect(url_for('HQteam_1.html'))
+    # return render_template('HQteam_1.html', username=current_user)
+    return redirect(url_for('info'))
 
 
 @app.route('/plottest')
