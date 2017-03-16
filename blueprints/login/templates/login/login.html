@@ -144,8 +144,10 @@
 		<h1>Login</h1>
 		{{ wrong_message }}
 		<form action="" method="post" id="form1" target="_self">
-			{{form.hidden_tag()}}
-            			
+			{{form.hidden_tag()}}        			
+
+			<!--<p> {{form.username(size=80)}}  {{form.password(size=80)}} </p>	-->	
+
 			<input type="text" name="username" required placeholder="Username" id="username" autofocus>
 			</input>
 			<input type="password" name="password" required placeholder="Password" id="password">
