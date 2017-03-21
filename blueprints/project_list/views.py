@@ -7,12 +7,19 @@ from hqlf.models.project import Project, ProjectsList, HOME
 
 project_list = Blueprint('project_list', __name__, template_folder='templates')
 
+
+@project_list.route("/remove")
+def remove_project():
+    project_id = int(request.args.get("proj_id"))
+    print("Removing project id = %d"%project_id)
+    ProjectsList.remove(project_id)
+    return redirect(url_for('home'))
+
 @project_list.route("/add", methods=['GET', 'POST'])
-def add_project():
-    global project_list
+def add_project():    
     project_name = request.args.get("project_name")
-    usr_id = current_user.get_id()
-    print("CURRENT ID", usr_id)
+    print('Adding project {0} by user {1}'.format(project_name, current_user.username))
+    usr_id = current_user.get_id()    
     ProjectsList.add(Project(usr_id=usr_id, name=project_name))
     # return render_template('project_list/explorers.html', projects=projects)
     return redirect(url_for('home'))
@@ -22,7 +29,7 @@ def add_project():
 def enter_folder():
     project_id = int(request.args.get("proj_id"))
     path_target = request.args.get("path")
-    for p in projects:
+    for p in ProjectsList.projects:
         if p.id == project_id:
             p.enter(path_target)
     return redirect(url_for('home'))
@@ -31,7 +38,7 @@ def enter_folder():
 @project_list.route("/upper", methods=['GET', 'POST'])
 def upper():
     project_id = int(request.args.get("proj_id"))
-    for p in projects:
+    for p in ProjectsList.projects:
         if p.id == project_id:
             p.upper()
     return redirect(url_for('home'))
@@ -40,7 +47,7 @@ def upper():
 @project_list.route("/refresh", methods=['GET', 'POST'])
 def refresh():
     project_id = int(request.args.get("proj_id"))
-    for p in projects:
+    for p in ProjectsList.projects:
         if p.id == project_id:
             p.refresh()
     return redirect(url_for('home'))

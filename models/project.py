@@ -4,12 +4,21 @@ from hqlf.config import WORK_ROOT
 
 HOME = WORK_ROOT
 
+
 class ProjectsList:
     projects = []
 
     @classmethod
     def add(self, proj):
         ProjectsList.projects.append(proj)
+
+    @classmethod
+    def remove(self, proj_id):
+        for p in ProjectsList.projects:
+            if p.id == proj_id:
+                ProjectsList.projects.remove(p)
+                return None
+
 
 class PathForWeb:
 
@@ -19,7 +28,13 @@ class PathForWeb:
         self._fullpath = fullpath
         self._basename = os.path.basename(self._fullpath)
         self._pdir = os.path.dirname(self._fullpath)
-        self._pdirs = self._pdir.split('\\')[1:]
+        tdir = self._pdir
+        self._pdirs = []
+        tdir = os.path.abspath(tdir)
+        while len(tdir) > 1:
+            self._pdirs.append(os.path.basename(tdir))
+            tdir = os.path.dirname(tdir)
+        self._pdirs.reverse()
 
     @property
     def fullpath(self):
@@ -37,9 +52,19 @@ class PathForWeb:
     def parent_list(self):
         return self._pdirs
 
+    def parent_list_short(self):
+        if len(self._pdirs) < 3:
+            tmp = self._pdirs
+            return tmp
+        else:
+            tmp = ['...']
+            tmp += self._pdirs[-2:]
+            return tmp
+
 
 class Project:
     cid = 0
+
     def __init__(self, usr_id, name=None, dir=None):
         if dir is None:
             dir = HOME
@@ -82,7 +107,7 @@ class Project:
 
     @property
     def pdirs(self):
-        return self._cdir.parent_list
+        return self._cdir.parent_list_short()
 
     @property
     def cdir(self):

@@ -9,7 +9,7 @@
             <span class="label label-info" style="margin-right:2px;" > {{ proj.name }} </span>
             <span class="label label-info" style="margin-right:2px;" > {{ proj.id }} </span>
             <span class="label label-info" style="margin-right:20px;"> {{ proj.user }} </span> </h4>
-            <a href="#"> <span class="glyphicon glyphicon-remove" aria-hidden="true" style="font-size:14px;"></span> </a>  
+            <a href=" {{url_for("project_list.remove_project", proj_id=proj.id)}}"> <span class="glyphicon glyphicon-remove" aria-hidden="true" style="font-size:14px;"></span> </a>  
         </div>
     </div>
     <div class="panel-body">
