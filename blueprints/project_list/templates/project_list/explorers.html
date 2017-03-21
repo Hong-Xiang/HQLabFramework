@@ -44,14 +44,14 @@
             <div class="container-fluid">
                   <ul class="list-group">
                 
-                    {% for file in proj.child_dirs %}
+                    {% for file in proj.child_dirs|sort(attribute='basename') %}
                         <li class="list-group-item">
                             <a class="btn btn-primary" href=" {{ url_for("project_list.enter_folder", path=file.fullpath, proj_id=proj.id) }} "> {{ file.basename }} </a>
                         </li>
                     {% endfor %}    
                 
               
-                    {% for file in proj.child_files %}
+                    {% for file in proj.child_files|sort(attribute='basename') %}
                         <li class="list-group-item"> <a href=" {{ url_for("project_list.open_file", path=file.fullpath )}} "> {{ file.basename }} </a> </li>
                     {% endfor %}                   
                 </ul>
