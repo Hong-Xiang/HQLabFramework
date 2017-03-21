@@ -1,7 +1,8 @@
 import os
 from hqlf.models.user import User
+from hqlf.config import WORK_ROOT
 
-HOME = os.environ['PATH_HQLFROOT']
+HOME = WORK_ROOT
 
 class ProjectsList:
     projects = []

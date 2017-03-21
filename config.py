@@ -4,7 +4,8 @@ CSRF_ENABLED = True
 SECRET_KEY = 'F34TF$($e34D'
 TEMPLATES_AUTO_RELOAD = True
 
-BASE_DIR = os.path.abspath("/home/hongxwing/Workspace/hqlf/database")
+WORK_ROOT = os.environ.get('PATH_HQLFROOT')
+BASE_DIR = os.path.join(os.environ.get('PATH_HQLF'), "database")
 
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(BASE_DIR, 'hqlf.db')
 SQLALCHEMY_MIGRATE_REPO = os.path.join(BASE_DIR, 'db_repository')
