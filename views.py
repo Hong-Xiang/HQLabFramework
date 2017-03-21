@@ -24,7 +24,7 @@ app.register_blueprint(hqteam, url_prefix='/hqteam')
 
 @app.route("/showdir")
 def showdir():
-    return redirect(url_for('project_list.home'))
+    return redirect(url_for('home'))
 
 @app.route('/help', methods=['GET'])
 def help():
@@ -61,8 +61,7 @@ def test_page():
 @app.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
-    # return render_template('HQteam_1.html', username=current_user)
-    print('Home redirected.')
+    # return render_template('HQteam_1.html', username=current_user)    
     return render_template('main.html', projects=ProjectsList.projects)
     # return redirect(url_for('info'))
     # return render_template('project_list/project_list.html', username=current_user)
@@ -76,7 +75,7 @@ def plottest():
     plt.plot(x, y)
     img = mpld3.fig_to_html(fig, template_type="simple")
     return img
-    return render_template('showpic.html', projects=projects, image_content=img)
+    # return render_template('showpic.html', projects=projects, image_content=img)
 
 
 
