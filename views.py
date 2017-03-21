@@ -5,28 +5,26 @@ from flask import render_template, flash, redirect, jsonify, url_for, request
 from flask_login import login_required, current_user
 from hqlf import app, oid
 from hqlf.blueprints.login import login_pages
-from hqlf.blueprints.project_list.views_common import project_list
+from hqlf.blueprints.project_list.views import project_list
+from hqlf.blueprints.hqtem import hqteam
+
+from hqlf.models.project import ProjectsList
+
 import numpy as np
 
 import matplotlib.pyplot as plt
 
 
+
+
 app.register_blueprint(login_pages, url_prefix='/login')
 app.register_blueprint(project_list, url_prefix='/project_list')
+app.register_blueprint(hqteam, url_prefix='/hqteam')
 
 
 @app.route("/showdir")
 def showdir():
     return redirect(url_for('project_list.home'))
-
-@app.route("/info", methods=['GET'])
-def info():
-    page = request.args.get('page')
-    if page is None:
-        page = 1
-    else:
-        page = int(page)
-    return render_template('HQteam_%d.html'%(page))
 
 @app.route('/help', methods=['GET'])
 def help():
@@ -42,8 +40,8 @@ def help():
         url = url_for(rule.endpoint, **options)
         line = "{:50s} {:20s} {}".format(rule.endpoint, methods, url)
         output.append(line)    
-    # return jsonify(output)
-    return url_for('project_list.home')
+    return jsonify(output)
+    # return url_for('project_list.home')
     # endpoints = [rule.rule for rule in app.url_map.iter_rules()
     #              if rule.endpoint != 'static']
     # return jsonify(dict(api_endpoints=endpoints))
@@ -64,7 +62,10 @@ def test_page():
 @login_required
 def home():
     # return render_template('HQteam_1.html', username=current_user)
-    return redirect(url_for('info'))
+    print('Home redirected.')
+    return render_template('main.html', projects=ProjectsList.projects)
+    # return redirect(url_for('info'))
+    # return render_template('project_list/project_list.html', username=current_user)
 
 
 @app.route('/plottest')
