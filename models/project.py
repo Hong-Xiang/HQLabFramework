@@ -1,9 +1,14 @@
 import os
 from hqlf.models.user import User
-HOME = "D:\\test"
 
-cid = 0
+HOME = os.environ['PATH_HQLFROOT']
 
+class ProjectsList:
+    projects = []
+
+    @classmethod
+    def add(self, proj):
+        ProjectsList.projects.append(proj)
 
 class PathForWeb:
 
@@ -33,14 +38,13 @@ class PathForWeb:
 
 
 class Project:
-
+    cid = 0
     def __init__(self, usr_id, name=None, dir=None):
         if dir is None:
             dir = HOME
         self._usr_id = usr_id
-        global cid
-        self._id = cid
-        cid += 1
+        self._id = Project.cid
+        Project.cid += 1
         if name is None:
             name = 'Project %d' % self._id
         self._name = name

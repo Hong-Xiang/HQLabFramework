@@ -5,13 +5,14 @@ from .. import db
 ROLE_USER = 0
 ROLE_ADMIN = 1
 
-
 class User(db.Model):
+    
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), unique=True)
     password = db.Column(db.String(32))
     email = db.Column(db.String(120), unique=True)
     role = db.Column(db.SmallInteger, default=ROLE_USER)
+
     # posts = db.relationship('Post', backref='author', lazy='dynamic')
 
     def __init__(self, username, password, email):
