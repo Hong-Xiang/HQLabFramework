@@ -7,7 +7,7 @@ from hqlf import app, oid
 from hqlf.blueprints.login import login_pages
 from hqlf.blueprints.project_list.views import project_list
 from hqlf.blueprints.hqtem import hqteam
-from hqlf.blueprints.dlws import dlws
+
 from hqlf.models.project import ProjectsList
 
 import numpy as np
@@ -20,7 +20,6 @@ import matplotlib.pyplot as plt
 app.register_blueprint(login_pages, url_prefix='/login')
 app.register_blueprint(project_list, url_prefix='/project_list')
 app.register_blueprint(hqteam, url_prefix='/hqteam')
-app.register_blueprint(dlws, url_prefix='/dlws')
 
 
 @app.route("/showdir")
@@ -62,7 +61,8 @@ def test_page():
 @app.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
-    # return render_template('HQteam_1.html', username=current_user)    
+    # return render_template('HQteam_1.html', username=current_user)
+    print('Home redirected.')
     return render_template('main.html', projects=ProjectsList.projects)
     # return redirect(url_for('info'))
     # return render_template('project_list/project_list.html', username=current_user)
