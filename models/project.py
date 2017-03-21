@@ -79,6 +79,7 @@ class Project:
         self._cdirs = None
         self._cfiles = None
         self._update_path_info()
+        self._project_type = 'Explorer'
 
     def _update_path_info(self):
         self._cdir = PathForWeb(self._cpath)
