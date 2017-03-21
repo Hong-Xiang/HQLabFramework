@@ -1,102 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>HQ Team</title>
-<style type="text/css">
-body {
-	width: 100%;
-	height: 100%;
-	font-family: 'Open Sans', sans-serif;
-	margin: 0;
-    background-color:#DDD;
-}
-#login {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	margin: -150px 0 0 -150px;
-	width: 300px;
-	height: 300px;
-}
-#login h1 {
-	color: #fff;
-	letter-spacing: 1px;
-	text-align: center;
-}
-h1 {
-	font-size: 36px;
-	margin: 0.67em 0;
-}
-input {
-	width: 278px;
-	height: 18px;
-	margin-bottom: 10px;
-	outline: none;
-	padding: 10px;
-	font-size: 15px;
-	color: #fff;
-	border-top: 1px solid #312E3D;
-	border-left: 1px solid #312E3D;
-	border-right: 1px solid #312E3D;
-	border-bottom: 1px solid #56536A;
-	border-radius: 4px;
-	background-color: #2D2D3F;
-}
-.but {
-	width: 300px;
-	min-height: 20px;
-	display: block;
-	background-color: #4a77d4;
-	border: 1px solid #3762bc;
-	color: #fff;
-	padding: 9px 14px;
-	font-size: 15px;
-	line-height: normal;
-	border-radius: 5px;
-	margin: 0;
-}
-#checkError {
-	width: 278px;
-	height: 18px;
-	margin-bottom: 10px;
-	outline: none;
-	padding: 10px;
-	font-size: 16px;
-	color: red;
-	text-shadow: 1px 1px 1px;
-	text-align: center;
-}
-#welcome {
-	position: absolute;
-	top: 99%;
-	left: 85%;
-	margin: -150px 0 0 -150px;
-	width: 400px;
-	height: 400px;
-}
-#welcome h1 {
-	color: #666666;
-	text-shadow: 0 0 15px;
-	letter-spacing: 1px;
-	text-align: center;
-	font-size: 35px;
-	opacity: 0.5;
-}
-.code {
-	font-family: Arial;
-	font-style: italic;
-	color: #930;
-	border: 0;
-	letter-spacing: 3 px;
-	font-weight: bolder;
-}
-</style>
-</head>
-
-<!--<body style="background-image:url(D:/hqlf/blueprints/HQTeam/img/background12.jpg);background-size:cover"> -->
-<body>
+{% extends "base.html" %}
+{% block content %}
 <h1 style="text-align:center"> Staff of HQ Team</h1>
+<!--<body style="background-image:url(D:/hqlf/blueprints/HQTeam/img/background12.jpg);background-size:cover"> -->
+
 <tr>
   <td align="left" valign="middle" width="50%" style="padding-top: 10px;padding-left:10px;border-bottom: 1px solid #E8E8E8;"><table style="margin-bottom: 15px;margin-left:70px" width="90%" border="0" cellspacing="0" cellpadding="0">
       <tr>
@@ -112,10 +18,4 @@ input {
       </tr>
     </table></td>
 </tr>
-
-
-
-
-
-</body>
-</html>
+{% endblock %}

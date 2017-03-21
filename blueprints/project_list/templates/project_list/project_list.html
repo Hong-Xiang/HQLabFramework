@@ -1,13 +1,11 @@
 <div class="container-fluid">
-    <form class="form-inline" role="form" method="GET" action="{{ url_for("project_list.add_project") }}">
-        <div class="form-group">
-            <label for="PeojectNameInput">Project Name</label>
-            <input name="project_name" type="text" class="form-control" id="PeojectNameInput" placeholder="Project">
-        </div>
-        <button class="btn btn-primary" role="button" type="submit">
-        Add Project
-    </button>
-    </form>
+  <form class="form-inline" role="form" method="GET" action="{{ url_for("project_list.add_project") }}" style="text-align:center;margin-bottom:-35px;">
+    <div class="form-group">
+      <label for="PeojectNameInput"></label>
+      <input name="project_name" type="text" class="form-control" id="PeojectNameInput" placeholder="ProjectName" required="required" style="width:56%;" >
+      <button class="btn btn-primary" role="button" type="submit"> Add Project </button>
+    </div>
+  </form>
 </div>
 <br>
 <br>
@@ -16,4 +14,3 @@
     {% block project_block scoped %} 
     {% endblock %}
 {% endfor %} 
-

@@ -4,15 +4,16 @@
 {{ super() }}
 <div class="panel panel-primary">
 <div class="container-fluid">
-    <div class="panel-heading">
+    <div class="panel-heading" style="margin-left:-35px; font-size:18px;margin-bottom:-15px">
         <div class="container-fluid">  
-            <span class="label label-info"> {{ proj.name }} </span>
-            <span class="label label-info"> {{ proj.id }} </span>
-            <span class="label label-info"> {{ proj.user }} </span> </h4>
+            <span class="label label-info" style="margin-right:2px;" > {{ proj.name }} </span>
+            <span class="label label-info" style="margin-right:2px;" > {{ proj.id }} </span>
+            <span class="label label-info" style="margin-right:20px;"> {{ proj.user }} </span> </h4>
+            <a href="#"> <span class="glyphicon glyphicon-remove" aria-hidden="true" style="font-size:14px;"></span> </a>  
         </div>
     </div>
     <div class="panel-body">
-        <div class="container-fluid">
+        <div class="container-fluid" style="margin-bottom:-15px;margin-left:-25px;">
             <ol class="breadcrumb"> 
                 {% for dir in proj.pdirs %}
                     <li>{{ dir }}</li>        
@@ -20,18 +21,19 @@
                 <li> {{ proj.cdir.basename }} </li>
             </ol>
         </div>
-        <div class="container-fluid">                      
-            <a class="btn btn-primary" href=" {{ url_for("project_list.upper", proj_id=proj.id) }} "> 向上 </a>        
-            <a class="btn btn-primary" href=" {{ url_for("project_list.refresh", proj_id=proj.id) }} "> 刷新 </a>        
+        <div class="container-fluid" style="margin-left:-25px;">                      
+            <a class="btn btn-primary" href=" {{ url_for("project_list.upper", proj_id=proj.id) }} "> <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> </a>        
+            <a class="btn btn-primary" href=" {{ url_for("project_list.refresh", proj_id=proj.id) }} "> <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> </a>        
             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample{{ proj.id }}" aria-expanded="false" aria-controls="collapseExample{{ proj.id }}">
-            列出目录
-            </button>                    
-            <form class="form" role="form" method="GET" action="{{ url_for("project_list.add_file" ) }}">                            
-                <label for="FileNameInput">File Name</label>
-                <input name="add_file_name" type="text" class="form-control" id="FileNameInput" placeholder="File">                            
-                <button class="btn btn-primary" role="button" type="submit">
-                    Add file
-                </button>
+           <span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+            </button>  
+             <button class="btn btn-primary" role="button" type="submit">
+              <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </button>                  
+            <form class="form" role="form" method="GET" action="{{ url_for("project_list.add_file" ) }}" style="margin-top:-10px;">                            
+                <label for="FileNameInput"></label>
+                <input name="add_file_name" type="text" class="form-control" id="FileNameInput" placeholder="FileName">                            
+
             </form>                   
         </div>
         <div class="collapse" id="collapseExample{{ proj.id }}">
