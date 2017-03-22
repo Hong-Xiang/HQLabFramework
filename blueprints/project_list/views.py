@@ -19,9 +19,9 @@ def remove_project():
 def add_project():    
     project_name = request.args.get("project_name")
     print('Adding project {0} by user {1}'.format(project_name, current_user.username))
-    usr_id = current_user.get_id()    
+    usr_id = current_user.get_id()     
     ProjectsList.add(Project(usr_id=usr_id, name=project_name))
-    # return render_template('project_list/explorers.html', projects=projects)
+    # return render_template('project_list/explorers.html', projects=projects)    
     return redirect(url_for('home'))
 
 

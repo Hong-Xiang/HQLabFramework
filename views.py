@@ -14,9 +14,6 @@ import numpy as np
 
 import matplotlib.pyplot as plt
 
-
-
-
 app.register_blueprint(login_pages, url_prefix='/login')
 app.register_blueprint(project_list, url_prefix='/project_list')
 app.register_blueprint(hqteam, url_prefix='/hqteam')

@@ -9,7 +9,7 @@ class ProjectsList:
     projects = []
 
     @classmethod
-    def add(self, proj):
+    def add(self, proj):        
         ProjectsList.projects.append(proj)
 
     @classmethod
@@ -31,9 +31,12 @@ class PathForWeb:
         tdir = self._pdir
         self._pdirs = []
         tdir = os.path.abspath(tdir)
-        while len(tdir) > 1:
+        
+        while True:            
             self._pdirs.append(os.path.basename(tdir))
-            tdir = os.path.dirname(tdir)
+            if os.path.dirname(tdir) == tdir:
+                break
+            tdir = os.path.dirname(tdir)                        
         self._pdirs.reverse()
 
     @property
@@ -65,14 +68,14 @@ class PathForWeb:
 class Project:
     cid = 0
 
-    def __init__(self, usr_id, name=None, dir=None):
+    def __init__(self, usr_id, name=None, dir=None):        
         if dir is None:
             dir = HOME
         self._usr_id = usr_id
         self._id = Project.cid
         Project.cid += 1
         if name is None:
-            name = 'Project %d' % self._id
+            name = 'Project %d' % self._id        
         self._name = name
         self._cpath = os.path.abspath(dir)
         self._cdir = None
@@ -82,7 +85,9 @@ class Project:
         self._project_type = 'Explorer'
 
     def _update_path_info(self):
+        print('upi called')
         self._cdir = PathForWeb(self._cpath)
+        print('pfw end')
         self._cdirs = []
         self._cfiles = []
         all_files = os.listdir(self._cpath)
@@ -92,6 +97,7 @@ class Project:
                 self._cdirs.append(PathForWeb(fabs))
             else:
                 self._cfiles.append(PathForWeb(fabs))
+        print('upi end')
 
     def upper(self):
         if self._cpath == HOME:
