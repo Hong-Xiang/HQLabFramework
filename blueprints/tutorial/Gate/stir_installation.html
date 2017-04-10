@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>GATE Toolkit</title>
+<style>
+#name{
+font-size:26px;
+font-weight:bold;
+font-family:"Times New Roman", Times, serif;
+}
+#preword{
+font-size:18px;
+font-family:"Times New Roman", Times, serif;
+}
+#div_nav{
+	background-color:rgba(153,204,255,0.5);
+	width:200px;
+	height:200px;
+	margin-left:20px;
+	font-size:18px;
+	font-family:"Times New Roman", Times, serif;
+	margin-top:2px;	
+}
+#div_content{
+	position:absolute;
+	left:250px;
+	top:112px;
+	width:75%;
+	height:1170px;
+	padding-left:10px;
+	padding-top:10px;
+	padding-right:10px;
+	padding-bottom:10px;	
+	font-family:"Times New Roman", Times, serif;
+	border:solid;
+	overflow:scroll;
+}
+h4{
+	font-family:"Times New Roman", Times, serif;
+}
+
+<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+</style>
+</head>
+<body>
+<table style="width:100%;background-color: rgba(255,153,102,0.6)">
+  <tr>
+    <td width="90px" rowspan="2" align="left"><img class="site-logo" typeof="foaf:Image" src="http://www.opengatecollaboration.org/sites/default/files/sitelogo2.png" alt="GATE" /></td>
+    <td  valign="center" id="name">GATE </td>
+  </tr>
+  <tr>
+    <td valign="top" id="preword">Simulations of Preclinical and Clinical Scans in Emission Tomography,<br>
+      Transmission Tomography and Radiation Therapy </td>
+  </tr>
+</table>
+<br>
+<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<span class="label label-primary" style="font-size:20px;width:200px;height
+:auto; display:inline-block; opacity: 0.8;margin-left:20px;color:black;">Site Contents</span>
+<div id="div_nav">
+<ul>
+<li><a href="http://wiki.opengatecollaboration.org/index.php/Users_Guide_V7.2" target="_blank"> User's guide</a></li>
+<li><a href="http://wiki.opengatecollaboration.org/index.php/Installation_Guide_V7.2" target="_blank" > Gate installation</a> </li>
+<li> <a href="D:\hqlf\blueprints\tutorial\Gate\stir_installation.html"> STIR installation</a></li>
+<li> <a href="D:\hqlf\blueprints\tutorial\Gate\gate_2_stir.html"> Gate_2_Stir</a></li>
+<li> <a href="D:\hqlf\blueprints\tutorial\Gate\vgate_guide.html">vGate guide</a></li>
+</ul>
+</div>
+
+<br>
+<span class="label label-primary" style="font-size:20px;width:200px; display:inline-block; opacity: 0.8;margin-left:20px;color:black;">Forewords</span>
+<div id="div_nav" style="height:auto;font-size:12px;">
+<p style="text-align:justify;margin-left:5px;margin-right:5px;padding-top:10px;padding-bottom:10px;">&nbsp;&nbsp; GATE is an advanced opensource software developed by the international OpenGATE collaboration and dedicated to numerical simulations in medical imaging and radiotherapy. It currently supports simulations of Emission Tomography (Positron Emission Tomography - PET and Single Photon Emission Computed Tomography - SPECT), Computed Tomography (CT), Optical Imaging (Bioluminescence and Fluorescence) and Radiotherapy experiments. Using an easy-to-learn macro mechanism to configurate simple or highly sophisticated experimental settings, GATE now plays a key role in the design of new medical imaging devices, in the optimization of acquisition protocols and in the development and assessment of image reconstruction algorithms and correction techniques. It can also be used for dose calculation in radiotherapy experiments.</p>
+</div>
+
+<!--
+<div id="div_nav" style="font-size:12px;margin-top:15px;">
+<img src="D:\hqlf\static\img\anim_ncat_gemini.gif" alt="GATEimage" width="200px">
+</div>
+-->
+
+<div id="div_nav" style="font-size:12px;margin-top:20px;">
+<img src="D:\hqlf\static\img\imagesmall.png" alt="GATEimage" width="200px">
+</div>
+
+<div id="div_content">
+<h3 align="center"> <b>STIR installation</b></h3>
+<br>
+<p><b>第一步：</b>注册。进入STIR网站(http://stir.sourceforge.net/),点击页面左边的Registration,在跳转的页面最下方点击Accept Terms and Conditions,然后按照跳出页面的要求发送邮件进行注册。 </p>
+<p><b>第二步：</b>下载安装包。在网页下点击Registered Users，输入用户名和密码。点击中间区域software as a zip file下载安装包，同时点击recon test pack.zip下载测试包。</p>
+<p><b>第三步：</b>下载库。在http://www.boost.org 下载BOOST，在http://www.opengatecollaboration.org/ECAT下载ECAT7。</p>
+<p><b>第四步：</b>安装部分工具包。
+<ul>
+<li>安装ECAT：<br>1. mkdir ecat7 <br> 2. 解压ecat.tar.gz到ecat7 <br>3. cp Makefile.unix Makefile <br>4. make (注：不能用make -jN) <br>5. mkdir include <br>6. cp *.h include (检查libecat.a是否在lib文件夹下，若无，进行如下操作：mkdir lib, cp libecat.a /lib) <br>7.配置环境变量：export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/PATH_TO/ecat7/lib</li>
+<li>安装BOOST：<br>1.解压BOOST：tar -zxf boost_1_61_0.tar.bz2 </li>
+</ul>
+</p>
+<p> <b>第五步：</b>安装STIR。 
+<ul>
+<li>解压STIR.zip</li>
+<li>返回上一个层级：cd .. </li>
+<li>新建一个安装目录：mkdir STIR-install </li>
+<li>打开cmake-gui软件，如下图。选择点击右上角的Browse Source，选择源文件（安装包）的路径，再点击Browser Build，选择安装目录。<br>
+<img src="D:\hqlf\static\img\cmake-gui.png" alt="Cmakeimage" width="84%" style="padding-top:10px;padding-bottom:10px;"></li>
+</li>
+<li>编译：点击左下角（相关选项可参考图中的值）Configure</li>
+<li>生成：点击左下角Generate</li>
+</ul>
+</p>
+<p><b>第六步：</b>测试。
+<ul>
+<li>解压测试包recon_test_pack.zip</li>
+<li>cd recon_test_pack</li>
+<li>sh run_tests.sh --nointbp ../STIR-install/bin</li>
+<li>如果程序能够正常运行完成，则表示安装成功，否则会报错。</li>
+</ul>
+</p>
+<p>可参考官网：<a href="http://stir.sourceforge.net/" target="_blank">http://stir.sourceforge.net/</a> 或发送邮件：<a herf="mailto:twj2417@163.com">twj2417@163.com</a>（陶伟杰博士）</p>
+</div>
+
+</body>
+</html>
+<h4></h4>
+</td>

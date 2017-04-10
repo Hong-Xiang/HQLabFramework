@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>GATE Toolkit</title>
+<style>
+#name{
+font-size:26px;
+font-weight:bold;
+font-family:"Times New Roman", Times, serif;
+}
+#preword{
+font-size:18px;
+font-family:"Times New Roman", Times, serif;
+}
+#div_nav{
+	background-color:rgba(153,204,255,0.5);
+	width:200px;
+	height:200px;
+	margin-left:20px;
+	font-size:18px;
+	font-family:"Times New Roman", Times, serif;
+	margin-top:2px;	
+}
+#div_content{
+	position:absolute;
+	left:250px;
+	top:112px;
+	width:75%;
+	height:1170px;
+	padding-left:10px;
+	padding-top:10px;
+	padding-right:10px;
+	padding-bottom:10px;	
+	font-family:"Times New Roman", Times, serif;
+	border:solid;
+	overflow:scroll;
+	/*overflow:scroll;*/
+}
+h4{
+	font-family:"Times New Roman", Times, serif;
+}
+
+<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+</style>
+</head>
+<body>
+<table style="width:100%;background-color: rgba(255,153,102,0.6)">
+  <tr>
+    <td width="90px" rowspan="2" align="left"><img class="site-logo" typeof="foaf:Image" src="http://www.opengatecollaboration.org/sites/default/files/sitelogo2.png" alt="GATE" /></td>
+    <td  valign="center" id="name">GATE </td>
+  </tr>
+  <tr>
+    <td valign="top" id="preword">Simulations of Preclinical and Clinical Scans in Emission Tomography,<br>
+      Transmission Tomography and Radiation Therapy </td>
+  </tr>
+</table>
+<br>
+<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<span class="label label-primary" style="font-size:20px;width:200px;height
+:auto; display:inline-block; opacity: 0.8;margin-left:20px;color:black;">Site Contents</span>
+<div id="div_nav">
+<ul>
+<li><a href="http://wiki.opengatecollaboration.org/index.php/Users_Guide_V7.2" target="_blank"> User's guide</a></li>
+<li><a href="http://wiki.opengatecollaboration.org/index.php/Installation_Guide_V7.2" target="_blank" > Gate installation</a> </li>
+<li> <a href="D:\hqlf\blueprints\tutorial\Gate\stir_installation.html"> STIR installation</a></li>
+<li> <a href="D:\hqlf\blueprints\tutorial\Gate\gate_2_stir.html"> Gate_2_Stir</a></li>
+<li> <a href="D:\hqlf\blueprints\tutorial\Gate\vgate_guide.html">vGate guide</a></li>
+</ul>
+</div>
+
+<br>
+<span class="label label-primary" style="font-size:20px;width:200px; display:inline-block; opacity: 0.8;margin-left:20px;color:black;">Forewords</span>
+<div id="div_nav" style="height:auto;font-size:12px;">
+<p style="text-align:justify;margin-left:5px;margin-right:5px;padding-top:10px;padding-bottom:10px;">&nbsp;&nbsp; GATE is an advanced opensource software developed by the international OpenGATE collaboration and dedicated to numerical simulations in medical imaging and radiotherapy. It currently supports simulations of Emission Tomography (Positron Emission Tomography - PET and Single Photon Emission Computed Tomography - SPECT), Computed Tomography (CT), Optical Imaging (Bioluminescence and Fluorescence) and Radiotherapy experiments. Using an easy-to-learn macro mechanism to configurate simple or highly sophisticated experimental settings, GATE now plays a key role in the design of new medical imaging devices, in the optimization of acquisition protocols and in the development and assessment of image reconstruction algorithms and correction techniques. It can also be used for dose calculation in radiotherapy experiments.</p>
+</div>
+
+<!--
+<div id="div_nav" style="font-size:12px;margin-top:15px;">
+<img src="D:\hqlf\static\img\anim_ncat_gemini.gif" alt="GATEimage" width="200px">
+</div>
+-->
+
+<div id="div_nav" style="font-size:12px;margin-top:20px;">
+<img src="D:\hqlf\static\img\imagesmall.png" alt="GATEimage" width="200px">
+</div>
+
+<div id="div_content">
+<h3 align="center"> <b>vGate guide</b></h3>
+<h4><b>1. Install vGate</b></h4>
+<p><b>Step 1：</b>Download vGate from the website:<a href="http://www.opengatecollaboration.org/vGATE72"> http://www.opengatecollaboration.org/vGATE72.</a></p>
+<p><b>Step 2:</b>Download Oracle VM VirtualBox and install it.</p>
+<p><b>Step 3:</b>Export vGate into VirtualBox followed from the website: <a href="http://jingyan.baidu.com/article/95c9d20da33a5fec4e7561d4.html">http://jingyan.baidu.com/article/95c9d20da33a5fec4e7561d4.html</a></p>
+<p><b>Step 4:</b>Start the VirtualBox and click the icon as follow: Onscreen keyboard.</p>
+<img src="D:\hqlf\static\img\vGate1.png"  width="300px" style="padding:10px;"><br>
+<p><b>Step 5:</b>Input the password by clicking the corresponding characters: virtual.</p>
+<p><b>Step 6:</b>Then you can see the following figure:</p>
+<img src="D:\hqlf\static\img\vGate2.png"  width="550px" style="padding:10px;"><br>
+<p><b>Step 7:</b>Change the keyboard layout from France to English layout.</p>
+<img src="D:\hqlf\static\img\vGate3.png"  width="550px" style="padding:10px;"><br>
+
+<h4><b>2. Run Gate in the terminal</b></h4>
+<p><b>Step 1:</b>Open the terminal.</p>
+<p><b>Step 2:</b>Type the command “Gate” in the prompt.</p>
+<img src="D:\hqlf\static\img\vGate4.png"  width="550px" style="padding:10px;"><br>
+<p><b>Step 3:</b>Please cd to the folder that contains the macro you want to run.</p>
+<p><b>Step 4:</b> Type in the command: Gate xxx.mac.</p>
+
+
+<p>相关教程可参考：<a href="D:\hqlf\blueprints\tutorial\Gate\vGate_notes.pdf" target="_blank">vGate guide</a> 或发送邮件：<a herf="mailto:gardenia09@163.com">gardenia09@163.com</a>（翁凤花技术员）</p>
+</div>c
+
+</body>
+</html>
+<h4></h4>
+</td>
