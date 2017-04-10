@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>GATE Toolkit</title>
+<style>
+#name{
+font-size:26px;
+font-weight:bold;
+font-family:"Times New Roman", Times, serif;
+}
+#preword{
+font-size:18px;
+font-family:"Times New Roman", Times, serif;
+}
+#div_nav{
+	background-color:rgba(153,204,255,0.5);
+	width:200px;
+	height:200px;
+	margin-left:20px;
+	font-size:18px;
+	font-family:"Times New Roman", Times, serif;
+	margin-top:2px;	
+}
+#div_content{
+	position:absolute;
+	left:250px;
+	top:112px;
+	width:75%;
+	height:1170px;
+	padding-left:10px;
+	padding-top:10px;
+	padding-right:10px;
+	padding-bottom:10px;	
+	font-family:"Times New Roman", Times, serif;
+	border:solid;
+	overflow:scroll;
+}
+h4{
+	font-family:"Times New Roman", Times, serif;
+}
+
+<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+</style>
+</head>
+<body>
+<table style="width:100%;background-color: rgba(255,153,102,0.6)">
+  <tr>
+    <td width="90px" rowspan="2" align="left"><img class="site-logo" typeof="foaf:Image" src="http://www.opengatecollaboration.org/sites/default/files/sitelogo2.png" alt="GATE" /></td>
+    <td  valign="center" id="name">GATE </td>
+  </tr>
+  <tr>
+    <td valign="top" id="preword">Simulations of Preclinical and Clinical Scans in Emission Tomography,<br>
+      Transmission Tomography and Radiation Therapy </td>
+  </tr>
+</table>
+<br>
+<link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+<span class="label label-primary" style="font-size:20px;width:200px;height
+:auto; display:inline-block; opacity: 0.8;margin-left:20px;color:black;">Site Contents</span>
+<div id="div_nav">
+<ul>
+<li><a href="http://wiki.opengatecollaboration.org/index.php/Users_Guide_V7.2" target="_blank"> User's guide</a></li>
+<li><a href="http://wiki.opengatecollaboration.org/index.php/Installation_Guide_V7.2" target="_blank" > Gate installation</a> </li>
+<li> <a href="D:\hqlf\blueprints\tutorial\Gate\stir_installation.html"> STIR installation</a></li>
+<li> <a href="D:\hqlf\blueprints\tutorial\Gate\gate_2_stir.html"> Gate_2_Stir</a></li>
+<li> <a href="D:\hqlf\blueprints\tutorial\Gate\vgate_guide.html">vGate guide</a></li>
+</ul>
+</div>
+
+<br>
+<span class="label label-primary" style="font-size:20px;width:200px; display:inline-block; opacity: 0.8;margin-left:20px;color:black;">Forewords</span>
+<div id="div_nav" style="height:auto;font-size:12px;">
+<p style="text-align:justify;margin-left:5px;margin-right:5px;padding-top:10px;padding-bottom:10px;">&nbsp;&nbsp; GATE is an advanced opensource software developed by the international OpenGATE collaboration and dedicated to numerical simulations in medical imaging and radiotherapy. It currently supports simulations of Emission Tomography (Positron Emission Tomography - PET and Single Photon Emission Computed Tomography - SPECT), Computed Tomography (CT), Optical Imaging (Bioluminescence and Fluorescence) and Radiotherapy experiments. Using an easy-to-learn macro mechanism to configurate simple or highly sophisticated experimental settings, GATE now plays a key role in the design of new medical imaging devices, in the optimization of acquisition protocols and in the development and assessment of image reconstruction algorithms and correction techniques. It can also be used for dose calculation in radiotherapy experiments.</p>
+</div>
+
+<!--
+<div id="div_nav" style="font-size:12px;margin-top:15px;">
+<img src="D:\hqlf\static\img\anim_ncat_gemini.gif" alt="GATEimage" width="200px">
+</div>
+-->
+
+<div id="div_nav" style="font-size:12px;margin-top:20px;">
+<img src="D:\hqlf\static\img\imagesmall.png" alt="GATEimage" width="200px">
+</div>
+
+<div id="div_content">
+<h3 align="center"> <b>Gate_2_Stir</b></h3>
+<p><b>第一步：</b>输入文件格式。STIR可以处理特定格式的数据，数据格式称为interfile。interfile包含头文件header text file(*.hs)和数据文件data file(*.s)两部分。</p>
+<p><b>第二步：</b>头文件信息。
+<br>
+<img src="D:\hqlf\static\img\header.png" alt="headerimage" style="padding-top:10px;padding-bottom:10px;" width="60%">
+<br>
+<b>注：</b>name of data file为数据名称(在同一目录下)；imagedata byte order字节顺序，和电脑有关，一般是little endian；number format是数据类型；number of bytes per pixel和数据类型有关，如float类型，则值为4；number of dimensions是数据的维度；matrix size [1]表示数据距离采样数；matrix size[2]是数据角度采样数；minimum ring difference per segment和maximum ring difference per segment为两个数组，数组中的值一一对应，也与matrix segment[2]也必须一一对应，一般设置为{0，-1，1，······，-（最大环数差）+1，最大环数差-1，-（最大环数差），最大环数差}。
+</p>
+<p><b>第三步：</b>重建算法。以ECAT系统为例，用FBP3DRP和OSEM重建。其中探测内半径41.2cm，32环，轴向长度15.52cm，72个模块，每个模块64个晶体，晶体大小是30mm×4.4mm×4.75mm，phantom为derenzo模型，该模型只有一层，厚度为6mm，每层512×512个像素，每个像素0.6mm×0.6mm，因此整个phantom直径30cm左右，其中最小点7.2mm。修改相应参数后，运行：nice FBP3DRP FBP3DRP.par 
+或nice OSMAPOSL OSMAPOSL.par 
+</p>
+<p><b>第四步：</b>输出结果。运行好程序，用imageJ打开。显示结果如下：
+<br>OSEM <br>
+<img src="D:\hqlf\static\img\OSEM.png" alt="OSEMimg" style="padding-top:10px;padding-bottom:10px;" width="60%">
+<br>FBP <br>
+<img src="D:\hqlf\static\img\FBP.png" alt="OSEMimg" style="padding-top:10px;padding-bottom:10px;" width="60%">
+</p>
+<p>相关参数可参考：<a href="D:\hqlf\blueprints\tutorial\Gate\Gate_2_Stir.pdf" target="_blank">Gate_2_Stir总结</a> 或发送邮件：<a herf="mailto:twj2417@163.com">twj2417@163.com</a>（陶伟杰博士）</p>
+</div>
+
+</body>
+</html>
+<h4></h4>
+</td>

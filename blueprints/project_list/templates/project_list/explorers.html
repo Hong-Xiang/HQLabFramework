@@ -21,25 +21,20 @@
                 <li> {{ proj.cdir.basename }} </li>
             </ol>
         </div>
-        <div class="container-fluid" style="margin-left:-25px;">                      
+        <div class="container-fluid" style="margin-left:-25px;margin-bottom:-20px">                      
             
             <a class="btn btn-primary" href=" {{ url_for("project_list.upper", proj_id=proj.id) }} "> <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span> </a>        
             <a class="btn btn-primary" href=" {{ url_for("project_list.refresh", proj_id=proj.id) }} "> <span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> </a>        
             <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample{{ proj.id }}" aria-expanded="false" aria-controls="collapseExample{{ proj.id }}">
             <span class="glyphicon glyphicon-th" aria-hidden="true"></span>        
             </button>
-            
-            
-            <form class="form" role="form" method="GET" action="{{ url_for("project_list.add_file" ) }}" style="margin-top:-10px;">                            
-                     
-                 <button class="btn btn-primary" role="button" type="submit">                     
-                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                 </button>                  
-                 
-                 
-                 <input name="add_file_name" type="text" class="form-control" id="FileNameInput" placeholder="FileName">                                             
-            </form>                   
+			<form class="form" role="form" method="GET" action="{{ url_for("project_list.add_file" ) }}" style="margin-top:-15px;"> 
+                <label for="FileNameInput"></label>
+				<input name="add_file_name" type="text" class="form-control" id="FileNameInput" placeholder="FileName" style="margin-top:5px;" required="required" >
+                <button class="btn btn-primary" role="button" type="submit" style="margin-top:-145px;margin-left:132px;"> <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> </button> 
+             </form>  			
         </div>
+		
         <div class="collapse" id="collapseExample{{ proj.id }}">
             <div class="container-fluid">
                   <ul class="list-group">
