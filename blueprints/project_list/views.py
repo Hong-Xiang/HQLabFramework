@@ -7,6 +7,9 @@ from hqlf.models.project import Project, ProjectsList, HOME
 
 project_list = Blueprint('project_list', __name__, template_folder='templates')
 
+FOCUS_CONTENTS = ''
+
+from hqlf.blueprints.dlws.views import Contents
 
 @project_list.route("/remove")
 def remove_project():
@@ -57,7 +60,8 @@ def refresh():
 def open_file():
     filename = request.args.get("path")
     with open(filename) as fin:
-        str = fin.read()
+        global FOCUS_CONTENTS
+        Contents.contents = fin.read()
     return redirect(url_for('home'))
 
 

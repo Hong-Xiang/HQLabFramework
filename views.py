@@ -9,7 +9,7 @@ from hqlf.blueprints.project_list.views import project_list
 from hqlf.blueprints.hqtem import hqteam
 from hqlf.blueprints.dlws import dlws
 from hqlf.models.project import ProjectsList
-
+from hqlf.blueprints.dlws.views import Contents
 import numpy as np
 
 import matplotlib.pyplot as plt
@@ -18,6 +18,8 @@ app.register_blueprint(login_pages, url_prefix='/login')
 app.register_blueprint(project_list, url_prefix='/project_list')
 app.register_blueprint(hqteam, url_prefix='/hqteam')
 app.register_blueprint(dlws, url_prefix='/dlws')
+
+from hqlf.blueprints.project_list.views import FOCUS_CONTENTS
 
 @app.route("/showdir")
 def showdir():
@@ -58,8 +60,9 @@ def test_page():
 @app.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
-    # return render_template('HQteam_1.html', username=current_user)    
-    return render_template('main.html', projects=ProjectsList.projects, lchtm="left_col.html", wshtm="dlws/base.html", rchtm="project_list/explorers.html")
+    # return render_template('HQteam_1.html', username=current_user)
+    hws = render_template('dlws/base.html', filecontents=Contents.contents)
+    return render_template('main.html', projects=ProjectsList.projects, lchtm="left_col.html", wshtm=hws, rchtm="project_list/explorers.html")
     # return redirect(url_for('info'))
     # return render_template('project_list/project_list.html', username=current_user)
 
