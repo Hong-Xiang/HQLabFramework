@@ -1,1 +1,0 @@
-""" Resource abstraction of HQLF """
