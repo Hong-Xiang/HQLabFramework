@@ -1,0 +1,5 @@
+hqlf.egg-info/PKG-INFO
+hqlf.egg-info/SOURCES.txt
+hqlf.egg-info/dependency_links.txt
+hqlf.egg-info/not-zip-safe
+hqlf.egg-info/top_level.txt

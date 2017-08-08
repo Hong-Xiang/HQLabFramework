@@ -1,5 +1,5 @@
-from hqlf.
+from hqlf.server.restful_api import server_api
 
 if __name__ == "__main__":
-    lauch()
+    server_api.run(debug=True)
 
