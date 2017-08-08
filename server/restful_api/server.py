@@ -1,0 +1,2 @@
+def lauch():    
+    print("TEST")
