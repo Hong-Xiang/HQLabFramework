@@ -1,2 +1,0 @@
-def lauch():    
-    print("TEST")
